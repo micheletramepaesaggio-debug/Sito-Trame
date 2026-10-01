@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% set header_over = true %}
+{% block content %}
+
+<section class="hero hero--home">
+  <div class="hero__media">
+    {{ img("poggetello/terrazza-panorama", "Una terrazza al tramonto sotto una tenda leggera, tra pietra, fioriture e vista sulla valle", "100vw", "", true) }}
+  </div>
+  <div class="hero__shade" aria-hidden="true"></div>
+  <div class="wrap hero__content">
+    <p class="eyebrow eyebrow--light hero__eyebrow">Atelier di paesaggio per l'ospitalità</p>
+    <h1 class="hero__title">Il paesaggio è la prima stanza <br>della tua struttura.</h1>
+    <p class="hero__lead">Spazi esterni su misura per hotel, resort, relais, agriresort e dimore storiche. <br>Pochi progetti alla volta. Seguiti dalla visione all'ultimo dettaglio.</p>
+    <div class="hero__actions">
+      <a class="btn btn--light" href="{{ root }}contatti.html#modulo">Richiedi la valutazione gratuita</a>
+      <a class="link-arrow link-arrow--light" href="{{ root }}regia-del-paesaggio.html">Scopri il metodo</a>
+    </div>
+  </div>
+  <p class="hero__caption">Borgo Poggetello, la terrazza verso la valle</p>
+</section>
+
+{# Il racconto del problema: la scena di Booking #}
+<section class="scene" aria-labelledby="scene-title">
+  <div class="wrap">
+    <div class="scene__head" data-reveal>
+      <p class="eyebrow">Il problema</p>
+      <h2 class="scene__title" id="scene-title">Il fuori decide <br><em>prima del dentro.</em></h2>
+    </div>
+    <ol class="scene__lines">
+      <li data-reveal>Sera. Un divano, uno smartphone, una vacanza da scegliere.</li>
+      <li data-reveal>Il tuo prossimo ospite scorre le strutture su Booking.</li>
+      <li data-reveal>Camere eleganti. Tutte un po' simili.</li>
+      <li data-reveal>Poi le foto degli esterni. <br>Un prato stanco. Un vialetto senza carattere. <br>Un angolo che nessuno ha pensato.</li>
+      <li data-reveal class="scene__turn">Scorre oltre.</li>
+      <li data-reveal class="scene__final">Non ha mai visto le tue camere. <br>Ha già deciso.</li>
+    </ol>
+    <div class="scene__after" data-reveal>
+      <p>Molte strutture sono curatissime all'interno e hanno spazi esterni anonimi.</p>
+      <p>È lì che si perdono ospiti, recensioni, valore percepito. <br>Spesso senza accorgersene.</p>
+    </div>
+  </div>
+</section>
+
+{# La soluzione #}
+<section class="solution">
+  <div class="wrap solution__grid">
+    <div class="solution__text" data-reveal>
+      <p class="eyebrow">La soluzione</p>
+      <h2 class="h2">Da problema irrisolto <br>a <em>vantaggio competitivo.</em></h2>
+      <p class="lead">Trame di Paesaggio è un atelier di progettazione e realizzazione del paesaggio.</p>
+      <p>Non siamo giardinieri. Siamo partner strategici. <br>
+        Trasformiamo lo spazio esterno nella parte della tua struttura che gli ospiti ricordano, fotografano, raccontano.</p>
+      <p>Con un metodo unico in Italia, ispirato al giardino secco e all'architettura del paesaggio. <br>
+        E con un solo interlocutore, dall'idea alla realizzazione.</p>
+      <a class="link-arrow" href="{{ root }}chi-siamo.html">Conosci l'atelier</a>
+    </div>
+    <figure class="solution__media" data-reveal>
+      {{ img("paternostro/padiglione-uliveto", "Un padiglione in legno tra gli ulivi, con ospiti che passeggiano nel prato", "(min-width: 900px) 55vw, 100vw") }}
+      <figcaption>Tenuta Paternostro, il padiglione nell'uliveto</figcaption>
+    </figure>
+  </div>
+</section>
+
+{# Cosa cambia, concretamente #}
+<section class="benefits" aria-labelledby="benefits-title">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">Cosa cambia, concretamente</p>
+      <h2 class="h2" id="benefits-title">Il paesaggio è un investimento. <br><em>E si vede.</em></h2>
+    </div>
+    <ol class="benefits__list">
+      <li class="benefit" data-reveal>
+        <span class="benefit__num">01</span>
+        <h3 class="benefit__title">Valore percepito</h3>
+        <p>Un esterno con un'identità alza il livello di tutta la struttura. <br>E rende naturali tariffe più alte.</p>
+      </li>
+      <li class="benefit" data-reveal>
+        <span class="benefit__num">02</span>
+        <h3 class="benefit__title">Nuove fonti di reddito</h3>
+        <p>Eventi, aperitivi al tramonto, esperienze all'aperto. <br>Lo spazio esterno diventa un luogo da vivere. E da proporre.</p>
+      </li>
+      <li class="benefit" data-reveal>
+        <span class="benefit__num">03</span>
+        <h3 class="benefit__title">Performance online</h3>
+        <p>Immagini che fermano lo scorrimento. Recensioni che parlano del giardino. <br>Contenuti visivi che lavorano per te, ogni giorno.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+{# La Regia del Paesaggio, versione sintetica #}
+<section class="regia-short" aria-labelledby="regia-title">
+  <div class="wrap">
+    <div class="regia-short__head" data-reveal>
+      <p class="eyebrow eyebrow--light">La Regia del Paesaggio</p>
+      <h2 class="h2" id="regia-title">Il progetto inizia <br><em>prima del sopralluogo.</em></h2>
+      <p class="regia-short__intro">Prima di mettere piede nella tua struttura, sappiamo già molto. <br>Quando arriviamo da te, arrivano le idee.</p>
+    </div>
+    <ol class="steps-short">
+      <li class="step-short step-short--key" data-reveal>
+        <span class="step-short__num">01</span>
+        <h3>L'ascolto</h3>
+        <p class="step-short__tag">Valutazione paesaggistica online</p>
+        <p>Una prima lettura del potenziale del tuo spazio. Gratuita, senza sopralluogo.</p>
+      </li>
+      <li class="step-short" data-reveal>
+        <span class="step-short__num">02</span>
+        <h3>La visione</h3>
+        <p>Immagini fotorealistiche e video della trasformazione, prima di ogni decisione.</p>
+      </li>
+      <li class="step-short" data-reveal>
+        <span class="step-short__num">03</span>
+        <h3>Il disegno</h3>
+        <p>Materiali, essenze, luce, atmosfera. <br>Niente è lasciato al caso.</p>
+      </li>
+      <li class="step-short" data-reveal>
+        <span class="step-short__num">04</span>
+        <h3>La regia</h3>
+        <p>Seguiamo la realizzazione in prima persona. Fino all'ultimo giorno.</p>
+      </li>
+    </ol>
+    <div class="regia-short__foot" data-reveal>
+      <p>Un solo interlocutore, dalla visione alla realizzazione.</p>
+      <a class="link-arrow link-arrow--light" href="{{ root }}regia-del-paesaggio.html">Scopri la Regia del Paesaggio</a>
+    </div>
+  </div>
+</section>
+
+{# Sostenibilità #}
+<section class="sustain" aria-labelledby="sustain-title">
+  <div class="wrap">
+    <div class="sustain__top">
+      <div class="sustain__head" data-reveal>
+        <p class="eyebrow">Sostenibilità</p>
+        <h2 class="h2" id="sustain-title">Bellezza che <br><em>consuma meno.</em></h2>
+      </div>
+      <div class="figures" data-reveal>
+        <p class="figure"><span class="figure__num">80<small>%</small></span><span class="figure__label">di acqua in meno</span></p>
+        <p class="figure"><span class="figure__num">70<small>%</small></span><span class="figure__label">di risorse in meno</span></p>
+        <p class="figures__note">Fino all'80% di acqua e al 70% di risorse in meno rispetto alle aree verdi tradizionali. Risultato ottenuto sul caso <a href="{{ root }}casi-studio/park-hotel-sabina.html">Park Hotel Sabina</a>.</p>
+      </div>
+    </div>
+
+    <figure class="sustain__media" data-reveal>
+      {{ img("park-hotel-sabina/vista-alto", "Vista dall'alto di un giardino secco: aiuole di piante xerofile, percorsi in pietra, ulivi e cipressi", "100vw") }}
+    </figure>
+
+    <ol class="pillars">
+      <li class="pillar" data-reveal>
+        <h3 class="pillar__title"><span>I.</span> Piante xerofile</h3>
+        <p>Specie autoctone e piante che amano il sole e la pietra. <br>Bellezza che non chiede acqua in continuazione.</p>
+      </li>
+      <li class="pillar" data-reveal>
+        <h3 class="pillar__title"><span>II.</span> Materiali del territorio</h3>
+        <p>Pietre, ghiaie, legni del luogo. <br>Il giardino parla la lingua del paesaggio che lo circonda.</p>
+      </li>
+      <li class="pillar" data-reveal>
+        <h3 class="pillar__title"><span>III.</span> Paesaggio che dura</h3>
+        <p>Cura ridotta nel tempo. <br>Un'estetica autentica che matura con gli anni, invece di consumarsi.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+{# Anteprima casi studio #}
+<section class="cases-preview" aria-labelledby="cases-title">
+  <div class="wrap">
+    <div class="section-head section-head--split" data-reveal>
+      <div>
+        <p class="eyebrow">Casi studio</p>
+        <h2 class="h2" id="cases-title">Luoghi che ora <br><em>si raccontano da fuori.</em></h2>
+      </div>
+      <a class="link-arrow" href="{{ root }}casi-studio/index.html">Tutti i casi studio</a>
+    </div>
+    <div class="cases-grid">
+      {% for c in cases %}{{ m.case_card(c, loop.index) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+{{ m.signature() }}
+
+{# L'atelier #}
+<section class="founder-teaser">
+  <div class="wrap founder-teaser__grid">
+    <div class="portrait portrait--placeholder" data-reveal>
+      {{ m.leaf("portrait__leaf") }}
+      <p>Ritratto dell'Arch. Federico Cuzzolini <br>{{ m.tbc("foto da caricare") }}</p>
+    </div>
+    <div class="founder-teaser__text" data-reveal>
+      <p class="eyebrow">L'atelier</p>
+      <h2 class="h2">Pochi progetti alla volta. <br><em>Seguiti uno per uno.</em></h2>
+      <p>Ogni progetto passa dallo sguardo dell'Arch. Federico Cuzzolini, architetto paesaggista, co-fondatore e direttore creativo di Trame di Paesaggio.</p>
+      <p>Dalla prima lettura del luogo all'ultima pietra posata.</p>
+      <a class="link-arrow" href="{{ root }}chi-siamo.html">Chi siamo</a>
+    </div>
+  </div>
+</section>
+
+{{ m.cta() }}
+
+{% endblock %}

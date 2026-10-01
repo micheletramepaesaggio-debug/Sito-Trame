@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-hero page-hero--contact">
+  <div class="wrap page-hero__grid">
+    <div class="page-hero__text" data-reveal>
+      <p class="eyebrow">Valutazione paesaggistica online</p>
+      <h1 class="page-hero__title">Scopri cosa può diventare <br><em>il tuo spazio esterno.</em></h1>
+    </div>
+    <div class="page-hero__lead" data-reveal>
+      <ul class="promise">
+        <li><strong>30 minuti</strong><span>Una chiamata, quando preferisci</span></li>
+        <li><strong>Gratuita</strong><span>Senza alcun costo</span></li>
+        <li><strong>Senza impegno</strong><span>Nessun obbligo di proseguire</span></li>
+        <li><strong>Senza sopralluogo</strong><span>Partiamo dalle immagini del tuo spazio</span></li>
+      </ul>
+      <p>Solo chiarezza su cosa è possibile fare con il tuo spazio.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="modulo">
+  <div class="wrap contact__grid">
+    <div class="contact__side" data-reveal>
+      <h2 class="h3">Come funziona</h2>
+      <ol class="how">
+        <li><span>01</span><p>Compili il modulo e ci racconti la tua struttura.</p></li>
+        <li><span>02</span><p>Ti ricontattiamo per fissare la chiamata, nel giorno e nell'orario che preferisci.</p></li>
+        <li><span>03</span><p>In 30 minuti leggiamo insieme il potenziale del tuo spazio esterno.</p></li>
+      </ol>
+      <p class="contact__note">Seguiamo pochi progetti alla volta. <br>Per questo ogni richiesta viene letta personalmente.</p>
+
+      <h2 class="h3">Preferisci scriverci o chiamarci?</h2>
+      <ul class="contact__direct">
+        <li><span>Email</span><a href="mailto:{{ company.email }}">{{ company.email }}</a></li>
+        <li><span>Telefono</span><a href="tel:{{ company.phone_href }}">{{ company.phone }}</a></li>
+        <li><span>Atelier</span>{{ company.address }}</li>
+        <li><span>Instagram</span><a href="{{ company.instagram }}" target="_blank" rel="noopener">@tramedipaesaggioatelier</a></li>
+      </ul>
+    </div>
+
+    <div class="contact__form-wrap" data-reveal>
+      <form class="form" data-contact-form novalidate>
+        <h2 class="form__title">Richiedi la valutazione</h2>
+        <p class="form__intro">I campi con l'asterisco sono necessari.</p>
+
+        <div class="form__row form__row--2">
+          <div class="field">
+            <label for="f-nome">Nome e cognome *</label>
+            <input id="f-nome" name="nome" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-struttura">Nome della struttura *</label>
+            <input id="f-struttura" name="struttura" type="text" autocomplete="organization" required>
+          </div>
+        </div>
+
+        <div class="form__row form__row--2">
+          <div class="field">
+            <label for="f-tipologia">Tipologia di struttura *</label>
+            <select id="f-tipologia" name="tipologia" required>
+              <option value="">Seleziona</option>
+              <option>Hotel</option>
+              <option>Resort</option>
+              <option>Relais</option>
+              <option>Agriresort o agriturismo</option>
+              <option>Dimora storica</option>
+              <option>Altro</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-localita">Località *</label>
+            <input id="f-localita" name="localita" type="text" autocomplete="address-level2" required>
+          </div>
+        </div>
+
+        <div class="form__row form__row--2">
+          <div class="field">
+            <label for="f-email">Email *</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-telefono">Telefono *</label>
+            <input id="f-telefono" name="telefono" type="tel" autocomplete="tel" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-messaggio">Raccontaci il tuo spazio esterno</label>
+          <textarea id="f-messaggio" name="messaggio" rows="5" placeholder="Com'è oggi, cosa non ti convince, cosa vorresti che diventasse."></textarea>
+        </div>
+
+        <div class="field field--hp" aria-hidden="true">
+          <label for="f-sito">Lascia vuoto questo campo</label>
+          <input id="f-sito" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="field field--check">
+          <input id="f-privacy" name="privacy" type="checkbox" required>
+          <label for="f-privacy">Ho letto l'<a href="{{ company.privacy }}" target="_blank" rel="noopener">informativa sulla privacy</a> e acconsento al trattamento dei miei dati per essere ricontattato. *</label>
+        </div>
+
+        <button class="btn btn--block" type="submit">Richiedi la valutazione gratuita</button>
+        <p class="form__status" role="status" aria-live="polite" data-form-status></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+{{ m.signature("signature--paper") }}
+
+{% endblock %}

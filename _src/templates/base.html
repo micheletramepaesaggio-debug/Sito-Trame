@@ -1,4 +1,4 @@
-{%- import "macros.html" as m with context -%}
+{% import "macros.html" as m with context %}
 <!doctype html>
 <html lang="it">
 <head>
@@ -6,49 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.description }}">
-  <meta name="theme-color" content="#F3F0E8">
+  <link rel="canonical" href="{{ page.canonical }}">
+  <meta name="theme-color" content="#F4F1EA">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Trame di Paesaggio Atelier">
   <meta property="og:title" content="{{ page.title }}">
   <meta property="og:description" content="{{ page.description }}">
-  {%- if page.og_image %}
-  <meta property="og:image" content="{{ root }}assets/img/{{ page.og_image }}">
-  {%- endif %}
+  <meta property="og:url" content="{{ page.canonical }}">
+  <meta property="og:image" content="{{ site_url }}assets/img/{{ og_image|default('poggetello/terrazza-panorama-1400.jpg') }}">
   <link rel="icon" href="{{ root }}assets/img/logo/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="{{ root }}assets/fonts/cormorant-garamond-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script>document.documentElement.classList.add("js")</script>
   <link rel="stylesheet" href="{{ root }}assets/css/style.css">
   <script src="{{ root }}assets/js/main.js" defer></script>
 </head>
-<body class="{{ page.body_class|default('') }}">
+<body class="page-{{ page.nav or 'base' }}">
   <a class="skip-link" href="#contenuto">Vai al contenuto</a>
 
-  <header class="site-header{% if page.header_over %} site-header--over{% endif %}" data-header>
+  <header class="site-header{% if header_over|default(false) %} site-header--over{% endif %}" data-header>
     <div class="site-header__inner">
-      <a class="brand" href="{{ root }}index.html" aria-label="Trame di Paesaggio Atelier, home">
-        {{ m.wordmark() }}
-      </a>
+      <a class="brand" href="{{ root }}index.html" aria-label="Trame di Paesaggio Atelier, torna alla home">{{ m.wordmark() }}</a>
 
       <nav class="nav" aria-label="Navigazione principale">
         <ul class="nav__list">
           <li><a class="nav__link{% if page.nav == 'chi-siamo' %} is-active{% endif %}" href="{{ root }}chi-siamo.html">Chi siamo</a></li>
           <li><a class="nav__link{% if page.nav == 'regia' %} is-active{% endif %}" href="{{ root }}regia-del-paesaggio.html">La Regia del Paesaggio</a></li>
-          <li class="nav__item--drop" data-dropdown>
-            <button class="nav__link nav__drop-toggle{% if page.nav == 'casi' %} is-active{% endif %}" type="button" aria-expanded="false" aria-controls="menu-casi">
-              Casi studio <span class="chev" aria-hidden="true"></span>
-            </button>
+          <li class="nav__drop" data-dropdown>
+            <button class="nav__link nav__drop-toggle{% if page.nav == 'casi' %} is-active{% endif %}" type="button" aria-expanded="false" aria-controls="menu-casi">Casi studio<span class="chev" aria-hidden="true"></span></button>
             <div class="dropdown" id="menu-casi">
-              <ul>
-                {%- for c in cases %}
-                <li>
-                  <a href="{{ root }}casi-studio/{{ c.slug }}.html">
-                    <span class="dropdown__title">{{ c.name }}</span>
-                    <span class="dropdown__meta">{{ c.place_short }}</span>
-                  </a>
-                </li>
-                {%- endfor %}
+              <ul class="dropdown__list">
+                {% for c in cases %}
+                <li><a href="{{ root }}casi-studio/{{ c.slug }}.html"><span class="dropdown__title">{{ c.name }}</span><span class="dropdown__meta">{{ c.place_short }}</span></a></li>
+                {% endfor %}
                 <li class="dropdown__all"><a href="{{ root }}casi-studio/index.html">Tutti i casi studio</a></li>
               </ul>
             </div>
@@ -58,31 +48,31 @@
         <a class="btn btn--small nav__cta" href="{{ root }}contatti.html#modulo">Valutazione gratuita</a>
       </nav>
 
-      <button class="burger" type="button" aria-expanded="false" aria-controls="menu-mobile" data-burger>
-        <span class="visually-hidden">Apri il menu</span>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Apri il menu" data-burger>
         <span class="burger__line"></span><span class="burger__line"></span>
       </button>
     </div>
 
-    <div class="mobile-menu" id="menu-mobile" hidden data-mobile-menu>
-      <ul class="mobile-menu__list">
-        <li><a href="{{ root }}index.html">Home</a></li>
-        <li><a href="{{ root }}chi-siamo.html">Chi siamo</a></li>
-        <li><a href="{{ root }}regia-del-paesaggio.html">La Regia del Paesaggio</a></li>
-        <li>
-          <a href="{{ root }}casi-studio/index.html">Casi studio</a>
-          <ul class="mobile-menu__sub">
-            {%- for c in cases %}
-            <li><a href="{{ root }}casi-studio/{{ c.slug }}.html">{{ c.name }}</a></li>
-            {%- endfor %}
-          </ul>
-        </li>
-        <li><a href="{{ root }}contatti.html">Contatti</a></li>
-      </ul>
-      <div class="mobile-menu__foot">
-        <p>Valutazione paesaggistica online.<br>30 minuti, gratuita, senza impegno.</p>
-        <a class="btn" href="{{ root }}contatti.html#modulo">Richiedi la valutazione</a>
-      </div>
+    <div class="mobile-menu" id="menu-mobile" data-mobile-menu>
+      <nav class="mobile-menu__inner" aria-label="Menu mobile">
+        <ul class="mobile-menu__list">
+          <li><a href="{{ root }}index.html">Home</a></li>
+          <li><a href="{{ root }}chi-siamo.html">Chi siamo</a></li>
+          <li><a href="{{ root }}regia-del-paesaggio.html">La Regia del Paesaggio</a></li>
+          <li><a href="{{ root }}casi-studio/index.html">Casi studio</a>
+            <ul class="mobile-menu__sub">
+              {% for c in cases %}
+              <li><a href="{{ root }}casi-studio/{{ c.slug }}.html">{{ c.name }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li><a href="{{ root }}contatti.html">Contatti</a></li>
+        </ul>
+        <div class="mobile-menu__foot">
+          <p>Valutazione paesaggistica online. <br>30 minuti, gratuita, senza impegno.</p>
+          <a class="btn" href="{{ root }}contatti.html#modulo">Richiedi la valutazione</a>
+        </div>
+      </nav>
     </div>
   </header>
 
@@ -92,45 +82,41 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <div class="site-footer__top">
-        <p class="site-footer__quote">Il paesaggio giusto non si nota.<br><em>Si vive.</em></p>
-        <a class="btn btn--light" href="{{ root }}contatti.html#modulo">Richiedi la valutazione gratuita</a>
-      </div>
-
       <div class="site-footer__grid">
         <div class="site-footer__brand">
-          {{ m.wordmark() }}
-          <p>Atelier di progettazione e realizzazione del paesaggio per l'ospitalità di alta gamma.</p>
+          <a href="{{ root }}index.html" aria-label="Trame di Paesaggio Atelier, torna alla home">{{ m.wordmark() }}</a>
+          <p>Atelier di progettazione e realizzazione del paesaggio per l'ospitalità che vuole distinguersi.</p>
         </div>
         <div>
           <h2 class="site-footer__h">Atelier</h2>
           <ul>
             <li><a href="{{ root }}chi-siamo.html">Chi siamo</a></li>
             <li><a href="{{ root }}regia-del-paesaggio.html">La Regia del Paesaggio</a></li>
-            <li><a href="{{ root }}contatti.html">Contatti</a></li>
+            <li><a href="{{ root }}contatti.html">Richiedi la valutazione</a></li>
           </ul>
         </div>
         <div>
           <h2 class="site-footer__h">Casi studio</h2>
           <ul>
-            {%- for c in cases %}
+            {% for c in cases %}
             <li><a href="{{ root }}casi-studio/{{ c.slug }}.html">{{ c.name }}</a></li>
-            {%- endfor %}
+            {% endfor %}
           </ul>
         </div>
         <div>
           <h2 class="site-footer__h">Contatti</h2>
           <ul>
-            <li>{{ m.info(company.email) }}</li>
-            <li>{{ m.info(company.phone) }}</li>
-            <li>{{ m.info(company.address) }}</li>
+            <li><a href="mailto:{{ company.email }}">{{ company.email }}</a></li>
+            <li><a href="tel:{{ company.phone_href }}">{{ company.phone }}</a></li>
+            <li>{{ company.address }}</li>
+            <li><a href="{{ company.instagram }}" target="_blank" rel="noopener">Instagram</a></li>
           </ul>
         </div>
       </div>
 
       <div class="site-footer__legal">
-        <p>&copy; <span data-year>2026</span> {{ company.legal_name }} &middot; P.IVA {{ m.info(company.vat) }}</p>
-        <p><a href="{{ root }}privacy.html">Privacy e cookie</a></p>
+        <p>&copy; <span data-year>2026</span> {{ company.legal_name }} &middot; P.IVA {{ company.vat }}</p>
+        <p><a href="{{ company.privacy }}" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="{{ company.cookie }}" target="_blank" rel="noopener">Cookie policy</a></p>
       </div>
     </div>
   </footer>

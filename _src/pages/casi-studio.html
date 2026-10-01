@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-hero">
+  <div class="wrap page-hero__grid">
+    <div class="page-hero__text" data-reveal>
+      <p class="eyebrow">Casi studio</p>
+      <h1 class="page-hero__title">Spazi esterni <br><em>che ora lavorano.</em></h1>
+    </div>
+    <p class="page-hero__lead" data-reveal>Agriturismi, hotel, tenute, borghi. <br>Luoghi diversi, una stessa domanda: come trasformare lo spazio esterno da problema irrisolto a vantaggio competitivo.</p>
+  </div>
+</section>
+
+<section class="cases-index">
+  <div class="wrap cases-grid cases-grid--index">
+    {% for c in cases %}{{ m.case_card(c, loop.index) }}{% endfor %}
+  </div>
+</section>
+
+{{ m.signature("signature--paper") }}
+
+{{ m.cta("Il prossimo caso studio può essere il tuo.") }}
+
+{% endblock %}

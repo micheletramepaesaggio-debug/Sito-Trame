@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% set og_image = "hortus/ingresso-1400.jpg" %}
+{% block content %}
+
+<section class="page-hero">
+  <div class="wrap page-hero__grid">
+    <div class="page-hero__text" data-reveal>
+      <p class="eyebrow">Chi siamo</p>
+      <h1 class="page-hero__title">Un atelier del paesaggio <br><em>per chi accoglie.</em></h1>
+    </div>
+    <p class="page-hero__lead" data-reveal>Trame di Paesaggio progetta e realizza spazi esterni su misura per strutture ricettive che vogliono distinguersi: hotel, resort, relais, agriresort, dimore storiche.</p>
+  </div>
+</section>
+
+<figure class="wide-media" data-reveal>
+  {{ img("hortus/ingresso-parcheggio", "Disegno a mano di un percorso d'ingresso tra siepi, cipressi e fioriture", "100vw", "", true) }}
+  <figcaption class="wrap">Hortus Natural Living, il percorso d'arrivo. Disegno dell'atelier.</figcaption>
+</figure>
+
+<section class="prose-section">
+  <div class="wrap prose-section__grid">
+    <h2 class="prose-section__title" data-reveal>Lo sguardo</h2>
+    <div class="prose" data-reveal>
+      <p class="lead">Crediamo che lo spazio esterno non sia un contorno. <br>È parte dell'esperienza dell'ospite.</p>
+      <p>È la prima cosa che vede. Nelle foto, prima ancora di prenotare. <br>
+        È il luogo dell'aperitivo, della colazione all'aperto, dell'evento che si ricorda. <br>
+        È quello che resta nelle immagini, e nelle recensioni.</p>
+      <p>Per questo non lo trattiamo come verde da sistemare. <br>
+        Lo trattiamo come un investimento che genera valore.</p>
+    </div>
+  </div>
+</section>
+
+<section class="statement">
+  <div class="wrap" data-reveal>
+    <p class="statement__text">Non siamo giardinieri. <br><em>Siamo partner strategici.</em></p>
+  </div>
+</section>
+
+<section class="prose-section">
+  <div class="wrap prose-section__grid">
+    <h2 class="prose-section__title" data-reveal>Un solo interlocutore</h2>
+    <div class="prose" data-reveal>
+      <p class="lead">Un paesaggio riuscito è il lavoro di molte mani. <br>Giardinieri, vivai, architetti del paesaggio, artigiani.</p>
+      <p>Noi siamo il collante tra tutti loro. <br>
+        Teniamo insieme la visione e la realizzazione, ogni scelta e ogni dettaglio.</p>
+      <p>Tu hai un unico interlocutore, dall'idea all'ultimo giorno. <br>
+        Noi ci occupiamo del resto.</p>
+    </div>
+  </div>
+</section>
+
+<section class="founder">
+  <div class="wrap founder__grid">
+    <div class="portrait portrait--placeholder portrait--tall" data-reveal>
+      {{ m.leaf("portrait__leaf") }}
+      <p>Ritratto dell'Arch. Federico Cuzzolini <br>{{ m.tbc("foto da caricare") }}</p>
+    </div>
+    <div class="founder__text" data-reveal>
+      <p class="eyebrow">Direzione creativa</p>
+      <h2 class="h2">Arch. Federico Cuzzolini</h2>
+      <p class="founder__role">Architetto paesaggista, co-fondatore di Trame di Paesaggio</p>
+      <p>Guida la direzione creativa dell'atelier. <br>
+        Ogni progetto passa dal suo sguardo: dalla prima lettura del luogo all'ultima pietra posata.</p>
+      <p>Il suo lavoro nasce dall'incontro tra il giardino secco e l'architettura del paesaggio. <br>
+        Un metodo unico in Italia, che mette insieme bellezza, identità del territorio e consumi ridotti.</p>
+      <p>{{ m.tbc("breve biografia: formazione, esperienze, riconoscimenti") }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="values" aria-labelledby="values-title">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">Come lavoriamo</p>
+      <h2 class="h2" id="values-title">Tre scelte <br><em>che non cambiamo.</em></h2>
+    </div>
+    <ol class="values__list">
+      <li class="value" data-reveal>
+        <span class="value__num">01</span>
+        <h3>Pochi progetti alla volta</h3>
+        <p>Per poterli seguire tutti, davvero. <br>Ogni progetto ha la nostra piena attenzione, dal primo giorno all'ultimo.</p>
+      </li>
+      <li class="value" data-reveal>
+        <span class="value__num">02</span>
+        <h3>Su misura, sempre</h3>
+        <p>Nessun modello da replicare. <br>Ogni paesaggio nasce dall'identità della struttura e del territorio che la circonda.</p>
+      </li>
+      <li class="value" data-reveal>
+        <span class="value__num">03</span>
+        <h3>Il territorio come materia</h3>
+        <p>Pietre, legni e piante del luogo. <br>Specie xerofile e autoctone, che chiedono poca acqua e poca cura nel tempo.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+{{ m.signature("signature--paper") }}
+
+{{ m.cta("Raccontaci il tuo spazio.", "In 30 minuti, senza sopralluogo, capiamo insieme cosa può diventare. Gratuitamente e senza impegno.") }}
+
+{% endblock %}

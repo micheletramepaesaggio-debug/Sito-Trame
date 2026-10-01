@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% set header_over = true %}
+{% set og_image = case.hero ~ "-1400.jpg" %}
+
+
+{% block content %}
+
+<section class="hero hero--case">
+  <div class="hero__media">{{ img(case.hero, case.hero_alt, "100vw", "", true) }}</div>
+  <div class="hero__shade" aria-hidden="true"></div>
+  <div class="wrap hero__content">
+    <p class="eyebrow eyebrow--light"><a href="{{ root }}casi-studio/index.html">Casi studio</a> &nbsp;/&nbsp; {{ case.place_short }}</p>
+    <h1 class="hero__title hero__title--case">{{ case.name }}</h1>
+    <p class="hero__subtitle">{{ case.subtitle }}</p>
+  </div>
+</section>
+
+<section class="case">
+  <div class="wrap case__grid">
+    <aside class="case__aside" aria-label="Dettagli del progetto">
+      <div class="case__aside-inner">
+        <h2 class="case__aside-h">Il progetto</h2>
+        <dl class="details">
+          {% for label, value in case.details %}
+          <div><dt>{{ label }}</dt><dd>{{ m.info(value) }}</dd></div>
+          {% endfor %}
+        </dl>
+        <h2 class="case__aside-h">Servizi svolti</h2>
+        {% if case.services %}
+        <ul class="services">{% for s in case.services %}<li>{{ s }}</li>{% endfor %}</ul>
+        {% else %}
+        <p>{{ m.tbc("servizi svolti") }}</p>
+        {% endif %}
+        <a class="btn btn--block" href="{{ root }}contatti.html#modulo">Richiedi la valutazione</a>
+      </div>
+    </aside>
+
+    <div class="case__main">
+      <p class="case__claim" data-reveal>{{ case.claim }}</p>
+      {% if case.draft_note is defined %}
+      <p class="draft-note">{{ m.tbc(case.draft_note) }}</p>
+      {% endif %}
+
+      <section class="narrative" data-reveal>
+        <p class="eyebrow">La situazione iniziale</p>
+        <h2 class="narrative__title">{{ case.situazione_title }}</h2>
+        {{ m.narrative(case.situazione) }}
+      </section>
+
+      <section class="narrative" data-reveal>
+        <p class="eyebrow">L'approccio progettuale</p>
+        <h2 class="narrative__title">{{ case.approccio_title }}</h2>
+        {{ m.narrative(case.approccio) }}
+      </section>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" aria-label="Galleria del progetto">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>Immagini del progetto</p>
+    <div class="gallery__grid" data-gallery>
+      {% for key, caption, size in case.gallery %}
+      <figure class="gallery__item {% if size %}gallery__item--{{ size }}{% endif %}" data-reveal>
+        <button class="gallery__open" type="button" data-full="{{ root }}{{ img_src_full(key) }}" data-caption="{{ caption }}" aria-label="Ingrandisci: {{ caption }}">
+          {{ img(key, caption, "(min-width: 900px) 60vw, 100vw") }}
+        </button>
+        <figcaption>{{ caption }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="testimonial" aria-label="La parola al cliente">
+  <div class="wrap" data-reveal>
+    {% if case.quote %}
+    <blockquote class="testimonial__quote">
+      <p>&ldquo;{{ case.quote[0] }}&rdquo;</p>
+      <footer>{{ case.quote[1] }}</footer>
+    </blockquote>
+    {% else %}
+    <blockquote class="testimonial__quote">
+      <p>{{ m.tbc("testimonianza del cliente, se disponibile") }}</p>
+    </blockquote>
+    {% endif %}
+  </div>
+</section>
+
+{{ m.cta(case.cta_title, case.cta_text) }}
+
+<nav class="next-case" aria-label="Caso studio successivo">
+  <a class="wrap next-case__link" href="{{ root }}casi-studio/{{ next_case.slug }}.html">
+    <span class="eyebrow">Caso studio successivo</span>
+    <span class="next-case__name">{{ next_case.name }}</span>
+    <span class="next-case__sub">{{ next_case.subtitle }}</span>
+  </a>
+</nav>
+
+<div class="lightbox" data-lightbox hidden>
+  <button class="lightbox__close" type="button" data-lightbox-close aria-label="Chiudi">&times;</button>
+  <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="Immagine precedente">&larr;</button>
+  <figure class="lightbox__figure">
+    <img alt="" data-lightbox-img>
+    <figcaption data-lightbox-caption></figcaption>
+  </figure>
+  <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="Immagine successiva">&rarr;</button>
+</div>
+
+{% endblock %}

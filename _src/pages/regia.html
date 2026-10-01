@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% set og_image = "paternostro/schizzo-padiglione-1400.jpg" %}
+{% block content %}
+
+<section class="page-hero page-hero--regia">
+  <div class="wrap page-hero__grid">
+    <div class="page-hero__text" data-reveal>
+      <p class="eyebrow">Il metodo</p>
+      <h1 class="page-hero__title">La Regia <br><em>del Paesaggio.</em></h1>
+    </div>
+    <div class="page-hero__lead regia-opening" data-reveal>
+      <p class="regia-opening__big">Il progetto inizia prima del sopralluogo.</p>
+      <p>Prima di mettere piede nella tua struttura, sappiamo già molto. <br>Quando arriviamo da te, arrivano le idee.</p>
+    </div>
+  </div>
+</section>
+
+<section class="steps" aria-label="Le quattro fasi della Regia del Paesaggio">
+  <div class="wrap">
+
+    <article class="step step--key" id="ascolto">
+      <div class="step__num" data-reveal>01</div>
+      <div class="step__body" data-reveal>
+        <p class="step__badge">Il tratto distintivo dell'atelier</p>
+        <h2 class="step__title">L'ascolto</h2>
+        <p class="step__sub">Valutazione paesaggistica online</p>
+        <p class="step__text">Analizziamo il tuo spazio da remoto: immagini, contesto, territorio, obiettivi. <br>
+          Una prima lettura del potenziale, gratuita e senza sopralluogo. <br>
+          Nessuna perdita di tempo per te.</p>
+        <dl class="step__facts">
+          <div><dt>Durata</dt><dd>Una chiamata di 30 minuti</dd></div>
+          <div><dt>Cosa serve</dt><dd>Qualche foto del tuo spazio e i tuoi obiettivi</dd></div>
+          <div><dt>Cosa ottieni</dt><dd>Chiarezza su cosa è possibile fare con il tuo spazio</dd></div>
+          <div><dt>Costo</dt><dd>Nessuno. È gratuita e senza impegno</dd></div>
+        </dl>
+        <a class="btn" href="{{ root }}contatti.html#modulo">Richiedi la valutazione</a>
+      </div>
+      <figure class="step__media" data-reveal>
+        {{ img("hortus/concept-colore", "Disegno assonometrico di una tenuta collinare con il nuovo giardino evidenziato a colori", "(min-width: 1000px) 40vw, 100vw") }}
+        <figcaption>Hortus Natural Living: la prima lettura dello spazio, da remoto.</figcaption>
+      </figure>
+    </article>
+
+    <article class="step" id="visione">
+      <div class="step__num" data-reveal>02</div>
+      <div class="step__body" data-reveal>
+        <h2 class="step__title">La visione</h2>
+        <p class="step__text">Diamo forma all'idea del nuovo spazio. <br>
+          Immagini fotorealistiche e video che ti mostrano la trasformazione prima di ogni decisione.</p>
+      </div>
+      <figure class="step__media" data-reveal>
+        {{ img("poggetello/padiglione", "Immagine fotorealistica di un giardino con pergola, muretti in pietra e padiglione in legno sullo sfondo", "(min-width: 1000px) 40vw, 100vw") }}
+        <figcaption>Borgo Poggetello: la trasformazione, vista prima di iniziare.</figcaption>
+      </figure>
+    </article>
+
+    <article class="step" id="disegno">
+      <div class="step__num" data-reveal>03</div>
+      <div class="step__body" data-reveal>
+        <h2 class="step__title">Il disegno</h2>
+        <p class="step__text">Ogni scelta definita nel dettaglio: materiali, essenze, luce, atmosfera. <br>
+          Niente è lasciato al caso.</p>
+      </div>
+      <figure class="step__media step__media--sketch" data-reveal>
+        {{ img("paternostro/schizzo-studio", "Schizzo a penna blu di un padiglione con copertura a doghe", "(min-width: 1000px) 40vw, 100vw") }}
+        <figcaption>Tenuta Paternostro: dallo schizzo alla forma del padiglione.</figcaption>
+      </figure>
+    </article>
+
+    <article class="step" id="regia">
+      <div class="step__num" data-reveal>04</div>
+      <div class="step__body" data-reveal>
+        <h2 class="step__title">La regia</h2>
+        <p class="step__text">Seguiamo la realizzazione in prima persona. <br>
+          Coordiniamo ogni artigiano, ogni fornitore, ogni dettaglio. <br>
+          Fino all'ultimo giorno.</p>
+      </div>
+      <figure class="step__media" data-reveal>
+        {{ img("poggetello/fontana", "Una fontana in pietra calcarea con vasca d'acqua, tra terrazzamenti erbosi", "(min-width: 1000px) 40vw, 100vw") }}
+        <figcaption>Borgo Poggetello: pietra locale, acqua, essenze. Ogni dettaglio seguito di persona.</figcaption>
+      </figure>
+    </article>
+
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap" data-reveal>
+    <p class="closing__big">Un solo interlocutore, <br><em>dalla visione alla realizzazione.</em></p>
+    <p class="closing__text">Perché è l'unico modo per garantire che quello che immaginiamo diventi davvero quello che costruiamo.</p>
+  </div>
+</section>
+
+<section class="sustain sustain--regia" aria-labelledby="benefici-title">
+  <div class="wrap">
+    <div class="sustain__top">
+      <div class="sustain__head" data-reveal>
+        <p class="eyebrow">I benefici</p>
+        <h2 class="h2" id="benefici-title">Un paesaggio che <br><em>chiede meno, e dura di più.</em></h2>
+      </div>
+      <div class="figures" data-reveal>
+        <p class="figure"><span class="figure__num">80<small>%</small></span><span class="figure__label">di acqua in meno</span></p>
+        <p class="figure"><span class="figure__num">70<small>%</small></span><span class="figure__label">di risorse in meno</span></p>
+        <p class="figures__note">Rispetto alle aree verdi tradizionali. Risultato ottenuto sul caso <a href="{{ root }}casi-studio/park-hotel-sabina.html">Park Hotel Sabina</a>.</p>
+      </div>
+    </div>
+    <ol class="pillars">
+      <li class="pillar" data-reveal>
+        <h3 class="pillar__title"><span>I.</span> Cura ridotta nel tempo</h3>
+        <p>Piante xerofile e specie autoctone, scelte per il clima del luogo. <br>Meno interventi, meno costi, ogni anno.</p>
+      </li>
+      <li class="pillar" data-reveal>
+        <h3 class="pillar__title"><span>II.</span> Materiali del territorio</h3>
+        <p>Pietre, legni, ghiaie del luogo. <br>Un'estetica autentica, che appartiene al paesaggio intorno.</p>
+      </li>
+      <li class="pillar" data-reveal>
+        <h3 class="pillar__title"><span>III.</span> Un'identità distintiva</h3>
+        <p>Un esterno che nessun'altra struttura ha. <br>E che i tuoi ospiti riconoscono, fotografano, raccontano.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+{{ m.cta("Inizia dall'ascolto.", "La valutazione paesaggistica online è il primo passo della Regia. 30 minuti, gratuita, senza impegno: solo chiarezza su cosa è possibile fare con il tuo spazio.") }}
+
+{% endblock %}
