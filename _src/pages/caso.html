@@ -31,6 +31,17 @@
         {% else %}
         <p>{{ m.tbc("servizi svolti") }}</p>
         {% endif %}
+        {% if case.website %}
+        <h2 class="case__aside-h">La struttura</h2>
+        <div class="client">
+          {% if case.logo %}
+          <a class="client__logo{% if case.logo_dark is defined %} client__logo--dark{% endif %}" href="{{ case.website }}" target="_blank" rel="noopener" aria-label="Visita il sito di {{ case.name }} (si apre in una nuova scheda)">
+            <img src="{{ root }}assets/img/loghi/{{ case.logo }}.png" alt="Logo {{ case.name }}" loading="lazy">
+          </a>
+          {% endif %}
+          <a class="link-arrow client__link" href="{{ case.website }}" target="_blank" rel="noopener">Visita il sito</a>
+        </div>
+        {% endif %}
         <a class="btn btn--block" href="{{ root }}contatti.html#modulo">Richiedi la valutazione</a>
       </div>
     </aside>
@@ -55,6 +66,26 @@
     </div>
   </div>
 </section>
+
+{% if case.video is defined %}
+<section class="video" aria-labelledby="video-title">
+  <div class="wrap">
+    <div class="video__head" data-reveal>
+      <p class="eyebrow">Video 3D</p>
+      <h2 class="h3" id="video-title">{{ case.video.title }}</h2>
+      <p>{{ case.video.text }}</p>
+    </div>
+    <div class="video__frame" data-video="https://drive.google.com/file/d/{{ case.video.drive_id }}/preview" data-reveal>
+      {{ img(case.video.poster, "", "(min-width: 900px) 80vw, 100vw", "video__poster") }}
+      <button class="video__play" type="button" aria-label="Guarda il video: {{ case.video.title }}">
+        <span class="video__icon" aria-hidden="true"></span>
+        <span class="video__label">Guarda il video</span>
+      </button>
+    </div>
+    <p class="video__alt"><a href="https://drive.google.com/file/d/{{ case.video.drive_id }}/view" target="_blank" rel="noopener">Il video non parte? Aprilo su Google Drive</a></p>
+  </div>
+</section>
+{% endif %}
 
 <section class="gallery" aria-label="Galleria del progetto">
   <div class="wrap">

@@ -136,6 +136,20 @@ var FALLBACK_EMAIL = "tramedipaesaggioatelier@gmail.com";
     }
   }
 
+  /* ---------- Video 3D: caricato solo al clic ---------- */
+  document.querySelectorAll("[data-video]").forEach(function (frame) {
+    var button = frame.querySelector(".video__play");
+    button.addEventListener("click", function () {
+      var iframe = document.createElement("iframe");
+      iframe.src = frame.getAttribute("data-video");
+      iframe.title = button.getAttribute("aria-label");
+      iframe.allow = "autoplay; fullscreen";
+      iframe.allowFullscreen = true;
+      frame.appendChild(iframe);
+      button.remove();
+    });
+  });
+
   /* ---------- Modulo di contatto ---------- */
   var form = document.querySelector("[data-contact-form]");
   if (form) {

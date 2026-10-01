@@ -26,8 +26,10 @@ python3 _src/build.py    # rigenera tutte le pagine
 - Casi studio (dettagli, servizi, testi, galleria, testimonianza): elenco `CASES` in `_src/build.py`.
 - Nuova immagine: aggiungere l'originale in `_materiali/04_immagini_casi_studio/`, registrarla in
   `IMAGES` dentro `_src/images.py`, quindi lanciare i due comandi sopra.
-- Domus Villa Clodia ha già il testo in `_src/build.py` ma non è pubblicato (`published: False`)
-  perché mancano le immagini.
+- Loghi delle strutture: originali in `_materiali/06_loghi_strutture/`, elenco `LOGOS` in
+  `_src/images.py`; il collegamento al sito della struttura è il campo `website` del caso studio.
+- Video 3D: campo `video` del caso studio (identificativo del file Google Drive). Il file su Drive
+  deve essere condiviso come "Chiunque abbia il link". Il video si carica solo al clic.
 
 I segnaposto `[DA COMPLETARE: …]` sono evidenziati in giallo nel sito: vanno sostituiti prima della
 messa online.

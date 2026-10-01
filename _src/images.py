@@ -26,9 +26,49 @@ IMAGES = [
     ("1_fontana poggetello_22.09.26.jpg", "poggetello", "fontana", None),
     ("ChatGPT Image 23 set 2026, 10_12_19 borgo pogetello.png", "poggetello", "terrazza-tramonto", None),
     ("vista panorama__22.09.26borgo pogetello.jpg", "poggetello", "prato-pergolato", None),
+    ("VILLA CLODIA_volo d uccello_17.09.26.jpg", "villa-clodia", "vista-alto", None),
+    ("VILLA CLODIA_agrumeto_17.09.26.jpg", "villa-clodia", "agrumeto", None),
+    ("VILLA CLODIA_forno2_17.09.26.jpg", "villa-clodia", "forno", None),
+    ("VILLA CLODIA_strada terrastabilizzata forno_17.09.26.jpg", "villa-clodia", "percorso", None),
+    ("schizzi villa c.jpg", "villa-clodia", "schizzi", None),
     ("VISTA3 park hotel.jpg", "park-hotel-sabina", "vista-alto", None),
     ("cartolina park hotel sabina 19.05.25.jpg", "park-hotel-sabina", "cartolina", None),
 ]
+
+
+# Loghi delle strutture: (file originale, nome di uscita)
+LOGOS_SRC = ROOT / "_materiali" / "06_loghi_strutture"
+LOGOS = [
+    ("logo hortus natural living.jpg", "hortus"),
+    ("logo park hotel sabina.png", "park-hotel-sabina"),
+    ("logo borgo pogetello.png", "borgo-poggetello"),
+    ("logo tenuta paternostro.png", "tenuta-paternostro"),
+]
+
+
+def export_logo(src, name):
+    """Ritaglia i margini vuoti e salva il logo in PNG a 480 px di larghezza massima."""
+    im = Image.open(LOGOS_SRC / src).convert("RGBA")
+    # bordo da ritagliare: pixel trasparenti oppure quasi bianchi
+    px = im.load()
+    w, h = im.size
+    mask = Image.new("L", im.size, 0)
+    mp = mask.load()
+    for y in range(h):
+        for x in range(w):
+            r, g, b, a = px[x, y]
+            if a > 20 and not (r > 245 and g > 245 and b > 245):
+                mp[x, y] = 255
+    box = mask.getbbox()
+    if box:
+        pad = int(max(w, h) * 0.04)
+        box = (max(0, box[0] - pad), max(0, box[1] - pad), min(w, box[2] + pad), min(h, box[3] + pad))
+        im = im.crop(box)
+    im.thumbnail((480, 480), Image.LANCZOS)
+    dest = OUT / "loghi"
+    dest.mkdir(parents=True, exist_ok=True)
+    im.save(dest / f"{name}.png", optimize=True)
+    print(f"loghi/{name}: {im.width}x{im.height}")
 
 
 def export(src, folder, name, crop):
@@ -54,3 +94,5 @@ def export(src, folder, name, crop):
 if __name__ == "__main__":
     for args in IMAGES:
         export(*args)
+    for args in LOGOS:
+        export_logo(*args)
