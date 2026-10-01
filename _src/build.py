@@ -46,11 +46,11 @@ SERVICES = [
 # Le righe di un paragrafo vanno a capo una per una, come nei copy originali.
 CASES = [
     {
-        "slug": "domus-villa-clodia",
+        "slug": "villa-clodia",
         "published": True,
         "website": "https://www.villaclodia.com/",
-        "logo": None,
-        "name": "Domus Villa Clodia",
+        "logo": "villa-clodia",
+        "name": "Villa Clodia",
         "subtitle": "Quando il dislivello diventa il progetto",
         "claim": "Tre giardini su un unico pendio.",
         "place_short": "Manziana",
@@ -62,7 +62,7 @@ CASES = [
         ],
         "services": SERVICES,
         "hero": "villa-clodia/vista-alto",
-        "hero_alt": "Vista dall'alto dei nuovi giardini a terrazze di Domus Villa Clodia, tra la villa storica e il paesaggio di Manziana",
+        "hero_alt": "Vista dall'alto dei nuovi giardini a terrazze di Villa Clodia, tra la villa storica e il paesaggio di Manziana",
         "card": "villa-clodia/agrumeto",
         "situazione_title": "Un terreno in pendenza. Una preoccupazione reale.",
         "situazione": [
@@ -105,7 +105,7 @@ CASES = [
         ],
         "quote": ("Quello che sembrava il limite principale del terreno è diventato l'elemento più caratteristico del progetto. "
                   "Non avrei immaginato che la pendenza potesse diventare un punto di forza.",
-                  "Leonardo, Domus Villa Clodia"),
+                  "Leonardo, Villa Clodia"),
         "cta_title": "Hai uno spazio con un vincolo che non sai come affrontare?",
         "cta_text": "Spesso è proprio lì che si nasconde il progetto più interessante. Inizia con una valutazione paesaggistica online, gratuita e senza impegno.",
     },

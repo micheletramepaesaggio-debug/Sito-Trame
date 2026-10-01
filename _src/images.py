@@ -43,6 +43,7 @@ LOGOS = [
     ("logo park hotel sabina.png", "park-hotel-sabina"),
     ("logo borgo pogetello.png", "borgo-poggetello"),
     ("logo tenuta paternostro.png", "tenuta-paternostro"),
+    ("logo villa clodia.jpg", "villa-clodia"),
 ]
 
 
