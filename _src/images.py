@@ -19,19 +19,22 @@ IMAGES = [
     ("6_Assonometria concept_24.12.25hortus.jpg", "hortus", "concept-colore", (0.18, 0.12, 0.98, 0.88)),
     ("immagine paternostro_26.08.26_1.jpg", "paternostro", "padiglione-uliveto", None),
     ("paternostro.png", "paternostro", "padiglione-vista", None),
-    ("schizzo padiglione paternostro.jpg", "paternostro", "schizzo-padiglione", None),
+    ("schizzo padiglione paternostro.jpg", "paternostro", "schizzo-padiglione", None, 90),
+    ("IMMAGINE 2 PATERNOSTRO_26.08.26.jpg", "paternostro", "padiglione-tramonto", None),
+    ("Progetto e Renders Paternostro_29.04.26 piantaaaok.jpg", "paternostro", "pianta-padiglione", (0.08, 0.08, 0.92, 0.95)),
     ("WhatsApp Image 2026-04-14 at 15.41.12paternostro.jpg", "paternostro", "schizzo-studio", None),
     ("3_panorama poggetello_23.09.26.jpg", "poggetello", "terrazza-panorama", None),
     ("2_padiglione_22.09.26.jpg", "poggetello", "padiglione", None),
     ("1_fontana poggetello_22.09.26.jpg", "poggetello", "fontana", None),
-    ("ChatGPT Image 23 set 2026, 10_12_19 borgo pogetello.png", "poggetello", "terrazza-tramonto", None),
-    ("vista panorama__22.09.26borgo pogetello.jpg", "poggetello", "prato-pergolato", None),
     ("VILLA CLODIA_volo d uccello_17.09.26.jpg", "villa-clodia", "vista-alto", None),
     ("VILLA CLODIA_agrumeto_17.09.26.jpg", "villa-clodia", "agrumeto", None),
     ("VILLA CLODIA_forno2_17.09.26.jpg", "villa-clodia", "forno", None),
     ("VILLA CLODIA_strada terrastabilizzata forno_17.09.26.jpg", "villa-clodia", "percorso", None),
-    ("schizzi villa c.jpg", "villa-clodia", "schizzi", None),
-    ("VISTA3 park hotel.jpg", "park-hotel-sabina", "vista-alto", None),
+    ("schizzi villa c.jpg", "villa-clodia", "schizzi", None, 0, True),
+    ("Giardino mediterraneo con pergolati e fiori v.2 park hotel.jpg", "park-hotel-sabina", "giardino", None),
+    ("vista4_03.09.25 PARK HOTEL.jpg", "park-hotel-sabina", "percorso", None),
+    ("Terrazza mediterranea al tramonto v2_park hotel.jpg", "park-hotel-sabina", "vista-alto", None),
+    ("pianta park hotel sab.jpg", "park-hotel-sabina", "pianta", None),
     ("cartolina park hotel sabina 19.05.25.jpg", "park-hotel-sabina", "cartolina", None),
 ]
 
@@ -72,11 +75,24 @@ def export_logo(src, name):
     print(f"loghi/{name}: {im.width}x{im.height}")
 
 
-def export(src, folder, name, crop):
+def whiten_paper(im):
+    """Schiarisce il fondo della carta verso il bianco, mantenendo il tratto."""
+    gray = ImageOps.grayscale(im)
+    # soglia morbida: i toni chiari (carta) diventano bianchi, il tratto resta
+    lut = [0 if v < 60 else 255 if v > 200 else int((v - 60) * 255 / 140) for v in range(256)]
+    mask = gray.point(lut)
+    return Image.composite(Image.new("RGB", im.size, "white"), im, mask)
+
+
+def export(src, folder, name, crop, rotate=0, paper=False):
     im = Image.open(SRC / src)
     im = ImageOps.exif_transpose(im)
     if im.mode != "RGB":
         im = im.convert("RGB")
+    if rotate:
+        im = im.rotate(rotate, expand=True)
+    if paper:
+        im = whiten_paper(im)
     if crop:
         w, h = im.size
         im = im.crop((int(crop[0] * w), int(crop[1] * h), int(crop[2] * w), int(crop[3] * h)))
